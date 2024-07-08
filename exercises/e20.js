@@ -7,13 +7,24 @@
 export function separateNamesWithAFromRest(array) {
   let namesWithA = [];
   let namesWithoutA = [];
+
   for (let i = 0; i < array.length; i++) {
-    if (array[i].includes('a')) {
-      namesWithA.push(array[i]);
+    let name = array[i];
+    let containsA = false;
+
+    for (let j = 0; j < name.length; j++) {
+      if (name[j].toLowerCase() === 'a') {
+        containsA = true;
+      }
+    }
+
+    if (containsA) {
+      namesWithA.push(name);
     } else {
-      namesWithoutA.push(array[i]);
+      namesWithoutA.push(name);
     }
   }
+
   return [namesWithA, namesWithoutA];
 }
 

@@ -5,14 +5,19 @@
 
 export function getClientWithGreatestBalance(bankAccounts) {
   let greatestBalance = 0;
+  let greatestBalanceClient = {};
+
   for (let i = 0; i < bankAccounts.length; i++) {
-    if (bankAccounts[i].balance > greatestBalance) {
-      greatestBalance = bankAccounts[i].balance;
+    const account = bankAccounts[i];
+    if (account.balance > greatestBalance) {
+      greatestBalance = account.balance;
+      greatestBalanceClient = account;
     }
   }
-  return bankAccounts.filter(
-    (bankAccount) => bankAccount.balance === greatestBalance
-  );
+
+  const result = [];
+  result.push(greatestBalanceClient);
+  return result;
 }
 
 // === TEST YOURSELF ===
